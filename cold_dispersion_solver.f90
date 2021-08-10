@@ -1,5 +1,5 @@
 !!!!!!!!!!! to solve the cold plasma dispersion relationship!!!!!!!
-!!!!!!!!!!！Stix 1992 Waves in plasma: page 8 and 9!!!!!!!!!!
+!!!!!!!!!!! Stix 1992 Waves in plasma: page 8 and 9!!!!!!!!!!
 !!!!!!!!!!! by Jingchun Li, Yaoru Qu!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!! Email: lijc@sustech.edu.cn !!!!!!!!!!!!!!
 
@@ -20,8 +20,7 @@ use parameters
 implicit none
 interface
     function calw(pol)
-    implicit none!这里的数组长度是由求解过程中的方程组决定的，我们的方程组
-                !是10次
+    implicit none!                
     real(8)::calw(10),pol(11)
     end function
 end interface
@@ -98,7 +97,7 @@ rpol(4,:)=p6
 rpol(5,:)=p8
 do i=1,280
 pol=(/1d0,0d0,p8(i),0d0,p6(i),0d0,p4(i),0d0,p2(i),0d0,p0(i)/)
-!需要一个根据系数求根的程序。系数是[1,0,p8,0,p6,0,p4,0,p2,0,p1,0]，每列结果按大小排列后放在WW里
+![1,0,p8,0,p6,0,p4,0,p2,0,p1,0] the input
 call DSRRT(pol,tem,tem2,n,m,L,b)  !Newton 
     do j=1,10
     WW(j,i)=tem(j)

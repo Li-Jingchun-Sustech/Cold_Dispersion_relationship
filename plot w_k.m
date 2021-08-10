@@ -1,5 +1,5 @@
-%%%%% to plot the w-k with the data from solving the cold dispersion relationship
-%%%%%Jingchun LI, E-mail:lijingchun2016@gmail.com
+%%%%% to plot the w-k with the data from cold dispersion relationship
+%%%%%Jingchun LI, E-mail:lijc@sustech.edu.cn
 clc;clear;
 z=load(['data.dat']);
 KK=z(1,:);
@@ -10,9 +10,10 @@ WW=x(1:5,:);
  h2=plot(KK,WW(5,:),'LineWidth',2);hold on;
 axis([0,20,0,30])
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-mp=1.6726231e-27;me=mp/10^10;epsilon0=8.854187817E-12;
+cova=15;   %c/va
+mp=1.6726231e-27;me=mp/1800;epsilon0=8.854187817E-12;
 qe=1.60217662e-19;q_i=qe;q_e=-qe;B0=1;m_e=me;m_i=mp;
-n_e=225*epsilon0*B0^2/mp;n_i=n_e;
+n_e=cova^2*epsilon0*B0^2/mp;n_i=n_e;
 wci=q_i*B0/m_i;
 wpi=sqrt(n_i*q_i^2/(epsilon0*m_i));
 wce=abs(q_e*B0/m_e);
